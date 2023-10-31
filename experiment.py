@@ -5,7 +5,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import OneHotEncoder
 from sklearn.compose import ColumnTransformer
 from sklearn.pipeline import Pipeline
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
 from flask_cors import CORS
 
 app = Flask(__name__)
@@ -72,6 +72,16 @@ def pythoncode():
         "college_prediction": college_prediction[0],
         "branch_prediction": branch_prediction[0],
     }
+
+
+@app.route("/add", methods=["POST"])
+def add_number():
+    number_string = request.get_json()["number"]
+    number = int(number_string)
+
+    # Do something with the number, such as adding it to a database
+
+    return jsonify({"success": True})
 
 
 @app.route("/api/data-analysis")

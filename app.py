@@ -5,8 +5,6 @@ import subprocess
 app = Flask(__name__)
 CORS(app)
 
-# Define a route to call the Python data analysis script
-
 
 @app.route("/api/data-analysis")
 def perform_data_analysis():
