@@ -49,8 +49,8 @@ model_college.fit(X_train, y_college_train)
 model_branch.fit(X_train, y_branch_train)
 
 # Predictions
-cet_cutoff_input = float(input("Enter CET Precentile: "))
-category_input = input("Enter Category (Open(1)/EWS(2)/TFWS(3)): ")
+cet_cutoff_input = float(78)
+category_input = input(1)
 
 input_data = pd.DataFrame(
     {"CET_Cutoff ": [cet_cutoff_input], "Category": [category_input]}
