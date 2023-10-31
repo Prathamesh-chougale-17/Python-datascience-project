@@ -49,8 +49,8 @@ model_college.fit(X_train, y_college_train)
 model_branch.fit(X_train, y_branch_train)
 
 # Predictions
-cet_cutoff_input = float(78)
-category_input = input(1)
+cet_cutoff_input = float(90)
+category_input = str(1)
 
 input_data = pd.DataFrame(
     {"CET_Cutoff ": [cet_cutoff_input], "Category": [category_input]}
@@ -59,5 +59,5 @@ input_data = pd.DataFrame(
 college_prediction = model_college.predict(input_data)
 branch_prediction = model_branch.predict(input_data)
 
-print(f"Predicted College: {college_prediction[0]}")
+print(f"Predicted College: {college_prediction[0]}\n")
 print(f"Predicted Branch: {branch_prediction[0]}")
