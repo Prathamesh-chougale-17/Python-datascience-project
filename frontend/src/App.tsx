@@ -95,7 +95,7 @@ function App() {
         },
       })
       .then((response) => {
-        console.log(response.data.message);
+        setResult(response.data);
       })
       .catch((error) => {
         console.error(error);
@@ -117,7 +117,7 @@ function App() {
     <div className="App">
       <form onSubmit={handleSubmit(FormSubmit)}>
         <label htmlFor="branch" className="form-label">
-          Branch
+          CET Cutoff Marks
         </label>
         <input
           {...register("branch", { valueAsNumber: true })}
@@ -128,7 +128,7 @@ function App() {
           onChange={(e) => setBranch(parseInt(e.target.value))}
         />
         <label htmlFor="college" className="form-label">
-          Collage
+          category
         </label>
         <input
           {...register("college", { valueAsNumber: true })}

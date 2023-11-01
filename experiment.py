@@ -7,12 +7,13 @@ from sklearn.compose import ColumnTransformer
 from sklearn.pipeline import Pipeline
 from flask import Flask, jsonify, request
 from flask_cors import CORS
+import json
 
 app = Flask(__name__)
 CORS(app)
 
 
-def pythoncode():
+def pythoncode(x, y):
     # Read the dataset
     df = pd.read_csv("PBL.csv")
     # Features and target columns
@@ -55,8 +56,8 @@ def pythoncode():
     model_branch.fit(X_train, y_branch_train)
 
     # Predictions
-    cet_cutoff_input = float(90)
-    category_input = str(1)
+    cet_cutoff_input = float(x)
+    category_input = str(y)
 
     input_data = pd.DataFrame(
         {"CET_Cutoff ": [cet_cutoff_input], "Category": [category_input]}
@@ -79,11 +80,12 @@ def add():
     try:
         data = request.get_json()  # Use get_json to parse JSON data
         print(data)  # Log the received data
-
+        print(data["branch"])
         # Process the data
 
-        response = {"message": "Data received successfully"}
-        return jsonify(response)
+        result = pythoncode(int(data["branch"]), int(data["college"]))
+        print(result)
+        return jsonify({"result": result})
     except Exception as e:
         print(f"Error: {str(e)}")  # Log any errors
 
@@ -91,6 +93,7 @@ def add():
 @app.route("/api/data-analysis")
 def perform_data_analysis():
     try:
+        print(add())
         # Run the Python data analysis script using subprocess
         result = pythoncode()
         return jsonify({"result": result})
