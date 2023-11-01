@@ -65,10 +65,6 @@ def pythoncode(x, y):
 
     college_prediction = model_college.predict(input_data)
     branch_prediction = model_branch.predict(input_data)
-
-    print(f"Predicted College: {college_prediction[0]}\n")
-    print(f"Predicted Branch: {branch_prediction[0]}")
-
     return {
         "college_prediction": college_prediction[0],
         "branch_prediction": branch_prediction[0],
@@ -79,8 +75,6 @@ def pythoncode(x, y):
 def add():
     try:
         data = request.get_json()  # Use get_json to parse JSON data
-        print(data)  # Log the received data
-        print(data["branch"])
         # Process the data
 
         result = pythoncode(int(data["branch"]), int(data["college"]))

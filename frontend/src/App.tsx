@@ -142,7 +142,8 @@ function App() {
       </form>
       <header className="App-header">
         <h1>Data Analysis Result:</h1>
-        <p>{result?.result?.college_prediction}</p>
+        <p>College : {result?.result?.college_prediction}</p>
+        <p>branch : {result?.result?.branch_prediction}</p>
       </header>
     </div>
   );
