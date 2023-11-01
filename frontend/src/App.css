@@ -40,3 +40,46 @@
 .read-the-docs {
   color: #888;
 }
+
+.form-label{
+  margin-left: 20px;
+}
+
+.inputForm{
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+  background-color: orange;
+  padding: 20px;
+}
+
+form{
+  display: flex;
+  justify-content: center;
+  width: 84%;
+}
+
+.submitButton{
+  margin-top: 20px;
+}
+
+.App-header{
+  background-color: aqua;
+  width: 20%;
+}
+
+.App{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.rules{
+  text-align: left;
+  margin-left: 170px;
+}
+
+.form-label{
+  margin-top: 10px;
+}

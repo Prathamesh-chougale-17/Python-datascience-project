@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import { FieldValues, useForm } from "react-hook-form";
+import "./App.css";
 interface ResultProps {
   result?: {
     branch_prediction: string;
@@ -35,34 +36,45 @@ function App() {
       });
   };
   return (
-    <div className="App">
+    <main className="App">
+      <div className="rules">
+        <h1>Rules: </h1>
+        <p>1. CET Cutoff should be between 0 and 100 and should be integer</p>
+        <p>2. Category should be between 0 and 3 and should be integer</p>
+        <p>3. If you are from General category enter 0</p>
+        <p>4. If you are from OBC category enter 1</p>
+        <p>5. If you are from SC category enter 2</p>
+      </div>
       <form onSubmit={handleSubmit(FormSubmit)}>
-        <label htmlFor="branch" className="form-label">
-          CET Cutoff Marks
-        </label>
-        <input
-          {...register("branch", { valueAsNumber: true })}
-          type="number"
-          id="branch"
-          placeholder="Branch"
-        />
-        <label htmlFor="college" className="form-label">
-          category
-        </label>
-        <input
-          {...register("college", { valueAsNumber: true })}
-          type="number"
-          id="college"
-          placeholder="College"
-        />
-        <button type="submit">Submit</button>
+        <div className="inputForm">
+          <label htmlFor="branch" className="form-label">
+            CET Percentile
+          </label>
+          <input
+            {...register("branch", { valueAsNumber: true })}
+            type="number"
+            id="branch"
+            placeholder="Branch"
+          />
+          <label htmlFor="college" className="form-label">
+            category
+          </label>
+          <input
+            {...register("college", { valueAsNumber: true })}
+            type="number"
+            id="college"
+            placeholder="College"
+          />
+          <button className="submitButton" type="submit">
+            Submit
+          </button>
+        </div>
       </form>
       <header className="App-header">
-        <h1>Data Analysis Result:</h1>
         <p>College : {result?.result?.college_prediction}</p>
         <p>branch : {result?.result?.branch_prediction}</p>
       </header>
-    </div>
+    </main>
   );
 }
 
