@@ -18,52 +18,7 @@ interface BodyProps {
 
 function App() {
   const [result, setResult] = useState<ResultProps>();
-  // interface BodyProps{
-  //   branch: number;
-  //   college: number;
-  // }
-
   const { register, handleSubmit } = useForm<BodyProps>();
-  // const onSubmit = (data: FieldValues) => console.log(data);
-  // const formSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-  //   e.preventDefault();
-  //   // axios
-  //   //   .post<BodyProps>(
-  //   //     "http://localhost:5000/add",
-  //   //     {
-  //   //       branch: branch,
-  //   //       college: college,
-  //   //     },
-  //   //     {
-  //   //       headers: {
-  //   //         "Access-Control-Allow-Origin": "*",
-  //   //         // "Content-Type": "application/json",
-  //   //         "X-Requested-With": "XMLHttpRequest",
-  //   //         "content-type": "application/json",
-  //   //       },
-  //   //     }
-  //   //   )
-  //   fetch(`http://localhost:5000/api/add`, {
-  //     method: "POST",
-  //     mode: "no-cors",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify({
-  //       branch: branch,
-  //       college: college,
-  //     }),
-  //   })
-  //     .then((response) => {
-  //       const data = response.body;
-  //       console.log(data);
-  //     })
-  //     .then((data) => {
-  //       console.log(data);
-  //     })
-  //     .catch((error) => console.error(error));
-  // };
-
   const FormSubmit = (data: FieldValues) => {
     const sentData = JSON.stringify(data);
     axios
@@ -79,18 +34,6 @@ function App() {
       .catch((error) => {
         console.error(error);
       });
-    // useEffect(() => {
-    //   fetch(`http://localhost:5000/api/add`, {
-    //     method: "POST",
-    //     mode: "no-cors",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //     body: JSON.stringify(data),
-    //   })
-    //     .then((response) => response.json())
-    //     .catch((error) => console.log(error));
-    // }, [data]);
   };
   return (
     <div className="App">
