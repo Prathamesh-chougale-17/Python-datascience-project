@@ -74,14 +74,18 @@ def pythoncode():
     }
 
 
-@app.route("/add", methods=["POST"])
-def add_number():
-    number_string = request.get_json()["number"]
-    number = int(number_string)
+@app.route("/api/add", methods=["POST"])
+def add():
+    try:
+        data = request.get_json()  # Use get_json to parse JSON data
+        print(data)  # Log the received data
 
-    # Do something with the number, such as adding it to a database
+        # Process the data
 
-    return jsonify({"success": True})
+        response = {"message": "Data received successfully"}
+        return jsonify(response)
+    except Exception as e:
+        print(f"Error: {str(e)}")  # Log any errors
 
 
 @app.route("/api/data-analysis")

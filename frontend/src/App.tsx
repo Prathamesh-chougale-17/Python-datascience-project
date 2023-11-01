@@ -1,7 +1,7 @@
 import axios from "axios";
+// import { head } from "axios";
 import { useState, useEffect } from "react";
 import { FieldValues, useForm } from "react-hook-form";
-
 interface ResultProps {
   result?: {
     branch_prediction: string;
@@ -13,6 +13,7 @@ interface ResultProps {
 interface BodyProps {
   branch: number;
   college: number;
+  error?: string;
 }
 
 function App() {
@@ -43,11 +44,78 @@ function App() {
   // }
 
   const { register, handleSubmit } = useForm<BodyProps>();
-  const onSubmit = (data: FieldValues) => console.log(data);
+  // const onSubmit = (data: FieldValues) => console.log(data);
+  // const formSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  //   e.preventDefault();
+  //   // axios
+  //   //   .post<BodyProps>(
+  //   //     "http://localhost:5000/add",
+  //   //     {
+  //   //       branch: branch,
+  //   //       college: college,
+  //   //     },
+  //   //     {
+  //   //       headers: {
+  //   //         "Access-Control-Allow-Origin": "*",
+  //   //         // "Content-Type": "application/json",
+  //   //         "X-Requested-With": "XMLHttpRequest",
+  //   //         "content-type": "application/json",
+  //   //       },
+  //   //     }
+  //   //   )
+  //   fetch(`http://localhost:5000/api/add`, {
+  //     method: "POST",
+  //     mode: "no-cors",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify({
+  //       branch: branch,
+  //       college: college,
+  //     }),
+  //   })
+  //     .then((response) => {
+  //       const data = response.body;
+  //       console.log(data);
+  //     })
+  //     .then((data) => {
+  //       console.log(data);
+  //     })
+  //     .catch((error) => console.error(error));
+  // };
 
+  const FormSubmit = (data: FieldValues) => {
+    const sentData = JSON.stringify(data);
+    console.log(sentData);
+    axios
+      .post("http://localhost:5000/api/add", sentData, {
+        headers: {
+          "Content-Type": "application/json",
+          mode: "no-cors",
+        },
+      })
+      .then((response) => {
+        console.log(response.data.message);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+    // useEffect(() => {
+    //   fetch(`http://localhost:5000/api/add`, {
+    //     method: "POST",
+    //     mode: "no-cors",
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //     },
+    //     body: JSON.stringify(data),
+    //   })
+    //     .then((response) => response.json())
+    //     .catch((error) => console.log(error));
+    // }, [data]);
+  };
   return (
     <div className="App">
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={handleSubmit(FormSubmit)}>
         <label htmlFor="branch" className="form-label">
           Branch
         </label>
