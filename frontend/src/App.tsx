@@ -1,5 +1,4 @@
 import axios from "axios";
-// import { head } from "axios";
 import { useState } from "react";
 import { FieldValues, useForm } from "react-hook-form";
 interface ResultProps {
