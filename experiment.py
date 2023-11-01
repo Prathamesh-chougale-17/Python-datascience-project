@@ -7,7 +7,6 @@ from sklearn.compose import ColumnTransformer
 from sklearn.pipeline import Pipeline
 from flask import Flask, jsonify, request
 from flask_cors import CORS
-import json
 
 app = Flask(__name__)
 CORS(app)
@@ -23,11 +22,8 @@ def pythoncode(x, y):
     # Train-test split
     (
         X_train,
-        X_test,
         y_college_train,
-        y_college_test,
         y_branch_train,
-        y_branch_test,
     ) = train_test_split(X, y_college, y_branch, test_size=0.2, random_state=42)
 
     # Define preprocessing pipeline
