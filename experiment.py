@@ -15,15 +15,20 @@ CORS(app)
 def pythoncode(x, y):
     # Read the dataset
     df = pd.read_csv("PBL.csv")
+
     # Features and target columns
     X = df[["CET_Cutoff ", "Category"]]
     y_college = df["College_Name"]
     y_branch = df["Branch"]
+
     # Train-test split
     (
         X_train,
+        X_test,
         y_college_train,
+        y_college_test,
         y_branch_train,
+        y_branch_test,
     ) = train_test_split(X, y_college, y_branch, test_size=0.2, random_state=42)
 
     # Define preprocessing pipeline
@@ -70,13 +75,11 @@ def pythoncode(x, y):
 @app.route("/api/add", methods=["POST"])
 def add():
     try:
-        data = request.get_json()  # Use get_json to parse JSON data
-        # Process the data
-
+        data = request.get_json()
         result = pythoncode(int(data["branch"]), int(data["college"]))
         return jsonify({"result": result})
     except Exception as e:
-        print(f"Error: {str(e)}")  # Log any errors
+        print(f"Error: {str(e)}")
 
 
 if __name__ == "__main__":
