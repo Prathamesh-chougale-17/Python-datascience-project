@@ -18,8 +18,6 @@ interface BodyProps {
 
 function App() {
   const [result, setResult] = useState<ResultProps>();
-  const [branch, setBranch] = useState(0);
-  const [college, setCollege] = useState(0);
   // interface BodyProps{
   //   branch: number;
   //   college: number;
@@ -105,8 +103,6 @@ function App() {
           type="number"
           id="branch"
           placeholder="Branch"
-          value={branch}
-          onChange={(e) => setBranch(parseInt(e.target.value))}
         />
         <label htmlFor="college" className="form-label">
           category
@@ -116,8 +112,6 @@ function App() {
           type="number"
           id="college"
           placeholder="College"
-          value={college}
-          onChange={(e) => setCollege(parseInt(e.target.value))}
         />
         <button type="submit">Submit</button>
       </form>
