@@ -78,7 +78,6 @@ def add():
         # Process the data
 
         result = pythoncode(int(data["branch"]), int(data["college"]))
-        print(result)
         return jsonify({"result": result})
     except Exception as e:
         print(f"Error: {str(e)}")  # Log any errors

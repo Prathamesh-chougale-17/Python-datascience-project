@@ -68,7 +68,6 @@ function App() {
 
   const FormSubmit = (data: FieldValues) => {
     const sentData = JSON.stringify(data);
-    console.log(sentData);
     axios
       .post("http://localhost:5000/api/add", sentData, {
         headers: {
