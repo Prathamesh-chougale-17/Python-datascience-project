@@ -84,16 +84,5 @@ def add():
         print(f"Error: {str(e)}")  # Log any errors
 
 
-@app.route("/api/data-analysis")
-def perform_data_analysis():
-    try:
-        print(add())
-        # Run the Python data analysis script using subprocess
-        result = pythoncode()
-        return jsonify({"result": result})
-    except Exception as e:
-        return jsonify({"error": str(e)})
-
-
 if __name__ == "__main__":
     app.run(debug=True)

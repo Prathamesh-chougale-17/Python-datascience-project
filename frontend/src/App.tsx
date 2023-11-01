@@ -1,6 +1,6 @@
 import axios from "axios";
 // import { head } from "axios";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { FieldValues, useForm } from "react-hook-form";
 interface ResultProps {
   result?: {
@@ -20,24 +20,6 @@ function App() {
   const [result, setResult] = useState<ResultProps>();
   const [branch, setBranch] = useState(0);
   const [college, setCollege] = useState(0);
-  useEffect(() => {
-    axios
-      .get<ResultProps>("http://localhost:5000/api/data-analysis")
-      .then((response) => {
-        const data = response.data;
-        if (data.error) {
-          setResult({
-            error: data.error,
-          });
-        } else {
-          setResult({
-            result: data.result,
-          });
-        }
-      })
-      .catch((error) => console.error(error));
-  }, []);
-
   // interface BodyProps{
   //   branch: number;
   //   college: number;
