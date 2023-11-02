@@ -54,7 +54,7 @@ function App() {
             {...register("branch", { valueAsNumber: true })}
             type="number"
             id="branch"
-            placeholder="Branch"
+            placeholder="CET Percentile"
           />
           <label htmlFor="college" className="form-label">
             category
@@ -63,7 +63,7 @@ function App() {
             {...register("college", { valueAsNumber: true })}
             type="number"
             id="college"
-            placeholder="College"
+            placeholder="category"
           />
           <button className="submitButton" type="submit">
             Submit
